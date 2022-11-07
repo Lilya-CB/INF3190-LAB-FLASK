@@ -1,7 +1,9 @@
 from flask import Flask
+from flask import render_template
 
 app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return "<h1> Bonjour au lab 8 sur Flask </h1>"
+    return render_template("lab8.html")
+
