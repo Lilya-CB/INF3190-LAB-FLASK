@@ -1,5 +1,7 @@
 from flask import Flask
 from flask import render_template
+from flask import request
+from flask import redirect,url_for
 
 app = Flask(__name__)
 
@@ -7,3 +9,25 @@ app = Flask(__name__)
 def index():
     return render_template("lab8.html")
 
+
+@app.route("/sumbit", methods=["GET", "POST"])
+def sumbit():
+    if len(request.form["prenom"]) < 1:
+        return redirect(url_for("erreur"))
+    with open("log.txt", "w") as fichier:
+        fichier.write(
+            "Prenom : " + request.form["prenom"] +
+            "\nGenre : " + request.form["genre"] +
+            "\nContinent : " + request.form["pays"]
+        )
+    return redirect(url_for("merci"))
+
+
+@app.route("/erreur")
+def erreur():
+    return "<h1 style='color:red'>Attention! Merci de remplir tous les champs du formulaire."
+
+
+@app.route("/merci")
+def merci():
+    return "<h1 style='color:green'> Merci, formulaire envoyé!</h1>"
