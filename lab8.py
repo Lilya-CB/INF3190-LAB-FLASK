@@ -10,7 +10,7 @@ def index():
     return render_template("lab8.html")
 
 
-@app.route("/sumbit", methods=["GET", "POST"])
+@app.route("/sumbit", methods=["POST"])
 def sumbit():
     if len(request.form["prenom"]) < 1:
         return redirect(url_for("erreur"))
