@@ -25,9 +25,11 @@ def sumbit():
 
 @app.route("/erreur")
 def erreur():
+    # Dans un projet, nous devons return une page html
     return "<h1 style='color:red'>Attention! Merci de remplir tous les champs du formulaire."
 
 
 @app.route("/merci")
 def merci():
+    # Dans un projet, nous devons return une page html
     return "<h1 style='color:green'> Merci, formulaire envoyé!</h1>"
